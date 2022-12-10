@@ -1,0 +1,81 @@
+<section id="create-page" class="create">
+  <form id="create-form" [formGroup]="formPost" (ngSubmit)="postProgramHandler()">
+    <fieldset>
+      <legend>Create recipe</legend>
+
+      <p class="field">
+        <label for="name">Name:</label>
+        <span class="input">
+          <input type="text" id="name" placeholder="Enter the name of your recipe" formControlName="name">
+        </span>
+      </p>
+      <ng-container *ngIf="formPost.get('name')?.touched">
+        <p *ngIf="formPost.get('name')?.errors?.['required']" class="error">
+          The name is required
+        </p>
+        <p *ngIf="formPost.get('name')?.errors?.['minlength']" class="error">
+          The name should be at least 6 characters long!
+        </p>
+      </ng-container>
+
+      <p class="field">
+        <label for="description">Description:</label>
+        <span class="input">
+          <textarea id="description" placeholder="Please enter the description here"
+            formControlName="description"></textarea>
+        </span>
+      </p>
+
+      <ng-container *ngIf="formPost.get('description')?.touched">
+        <p *ngIf="formPost.get('description')?.errors?.['required']" class="error">
+          Description is required
+        </p>
+      </ng-container>
+
+      <p class="field">
+        <label for="image">Image:</label>
+        <span class="input">
+          <input type="text" id="image" placeholder="Please upload an image" formControlName="image" />
+        </span>
+      </p>
+      <ng-container *ngIf="formPost.get('image')?.touched">
+        <p *ngIf="formPost.get('image')?.errors?.['required']" class="error">
+          Image is required
+        </p>
+      </ng-container>
+
+      <p class="field">
+        <label for="ingredients">Ingredients:</label>
+        <span class="input">
+          <textarea formControlName="ingredients" id="ingredients"
+            placeholder="Please enter the ingredients needed here"></textarea>
+        </span>
+      </p>
+
+      <ng-container *ngIf="formPost.get('ingredients')?.touched">
+        <p *ngIf="formPost.get('ingredients')?.errors?.['required']" class="error">
+          Ingredients are required
+        </p>
+        <p *ngIf="formPost.get('ingredients')?.errors?.['maxlength']" class="error">
+          Ingredients should be at max 200 characters long!
+        </p>
+      </ng-container>
+
+      <p class="field">
+        <label for="category">Category:</label>
+        <span class="input">
+          <select id="category" name="category">
+            <option value="">--Choose an option--</option>
+            <option value="cake">Cake</option>
+            <option value="cookie">Cookie</option>
+            <option value="pie">Pie</option>
+            <option value="muffin">Muffin</option>
+            <option value="sweets">Sweets</option>
+          </select>
+        </span>
+      </p>
+
+      <input class="button submit" type="submit" [disabled]="formPost.invalid" value="Create your recipe" />
+    </fieldset>
+  </form>
+</section>

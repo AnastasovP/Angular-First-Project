@@ -1,0 +1,64 @@
+<section id="register-page" class="register">
+  <form [formGroup]="form" (ngSubmit)="registerHandler()" class="register">
+
+    <fieldset>
+      <legend>Register Form</legend>
+
+      <p class="field">
+        <label for="email">Email</label>
+        <span class="input">
+          <input type="email" id="email" formControlName="email" placeholder="anastasovp@gmail.com">
+        </span>
+      </p>
+
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p *ngIf="form.get('email')?.errors?.['required']" class="error">
+          Email is required
+        </p>
+        <p *ngIf="form.get('email')?.errors?.['email']" class="error">
+          Invalid email !
+        </p>
+      </ng-container>
+
+
+      <p class="field">
+        <label for="password">Password</label>
+        <span class="input">
+          <input type="password" id="password" formControlName="password" placeholder="******">
+        </span>
+      </p>
+
+      <ng-container *ngIf="form.get('password')?.touched">
+        <p *ngIf="form.get('password')?.errors?.['required']" class="error">
+          Password is required!
+        </p>
+        <p *ngIf="form.get('password')?.errors?.['minlength']" class="error">
+          Password must be at least 6 characters!
+        </p>
+      </ng-container>
+
+      <p class="field">
+        <label for="rePassword">Repeat Password</label>
+        <span class="input">
+          <input type="password" id="rePassword" formControlName="rePassword" placeholder="******">
+        </span>
+      </p>
+
+      <ng-container *ngIf="form.get('rePassword')?.touched">
+        <p *ngIf="form.get('rePassword')?.errors?.['required']" class="error">
+          Password is required!
+        </p>
+        <p *ngIf="form.get('rePassword')?.errors?.['passwordMissmatch']" class="error">
+          Confirm password don't match
+        </p>
+      </ng-container>
+
+      <input class="button submit" type="submit" value="Register" [disabled]="form.invalid" />
+      <p class="field">
+        <span>If you alredy have a profile click <a routerLink="/login">here</a></span>
+      </p>
+
+    </fieldset>
+  </form>
+
+</section>

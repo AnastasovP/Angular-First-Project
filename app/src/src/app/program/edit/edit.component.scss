@@ -1,0 +1,25 @@
+.container{
+    padding: 20px;
+}
+
+.btn:hover{
+    background-color:#fdbe33;
+    color: black;
+}
+
+.counter{
+    position: relative;
+    float: right;
+    top: 5px
+}
+
+.error{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;  
+}
+
+#cancelPost{
+    margin-left: 20px;
+}

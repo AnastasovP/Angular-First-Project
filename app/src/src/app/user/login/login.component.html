@@ -1,0 +1,47 @@
+<section id="login-page" class="login">
+
+
+  <form [formGroup]="form" (ngSubmit)="loginHandler()" class="login">
+    <fieldset>
+      <legend>Login Form</legend>
+      <p class="field">
+        <label for="email">Email</label>
+        <span class="input">
+
+        <input type="email" id="loginEmal" class="form-control form-control-lg" formControlName="email" placeholder="anastasovp@gmail.com">
+      </span>
+    </p>
+        <ng-container *ngIf="form.get('email')?.touched">
+          <p *ngIf="form.get('email')?.errors?.['required']" class="error">
+            Email is required!
+          </p>
+          <p *ngIf="form.get('email')?.errors?.['email']" class="error">
+            Email is not valid!
+          </p>
+        </ng-container>
+
+        <p class="field">
+          <label for="password">Password</label>
+          <span class="input">
+        <input type="password" id="password" placeholder="******" formControlName="password">
+      </span>
+    </p>
+      <ng-container *ngIf="form.get('password')?.touched">
+        <p *ngIf="form.get('password')?.errors?.['required']" class="error">
+          Password is required!
+        </p>
+        <p *ngIf="form.get('password')?.errors?.['minlength']" class="error">
+          Password must be at least 6 characters!
+        </p>
+      </ng-container>
+
+
+      <input class="button submit" type="submit" value="Login" [disabled]="form.invalid" />
+      <p class="field">
+        <span>If you don't have a profile click <a routerLink="/register">here</a></span>
+      </p>
+    </fieldset>
+
+  </form>
+
+</section>
