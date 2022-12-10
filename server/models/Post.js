@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
     imageUrl: {type: String},
     ingredients: { type: String, maxlength: [200, 'Ingredients should be at max 200 characters long'] },
     category: { type: String },
-    author: { type: ObjectId, ref: 'User' },
+    owner: { type: ObjectId, ref: 'User' },
     likes: { type: [ObjectId], ref: 'User', default: []}
 });
 

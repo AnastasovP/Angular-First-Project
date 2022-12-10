@@ -6,12 +6,14 @@ async function getAllPost() {
 }
 
 async function getPostById(id) {
-    return await Post.findById(id).populate('owner')
+    const result = await Post.findById(id).populate('owner')
+    console.log(result);
+    // console.log(req.data);
+    return result;
     // .populate({
     //     path: 'comments',
     //     populate: { path: 'author' },
     // });
-    console.log('response')
 }
 
 async function createPost(data) {

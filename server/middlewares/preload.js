@@ -5,6 +5,7 @@ module.exports = (paramName = 'id') => async (req, res, next) => {
     try {
         const data = await getPostById(id);
         if (!data) {
+            console.log('NOT FOUND')
             throw new Error('Not found')
         }
         req.data = data;

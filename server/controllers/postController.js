@@ -12,8 +12,11 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', preload(), async (req, res) => { //api/:id' or '/:id'
     const item = req.data.toObject();
-    item._ownerId = item.owner.toString(); //with .toString() doesn't work 
+    item._ownerId = item.owner //.toString(); 
+    //res.status(200).json(item)
     res.json(item)
+    console.log(item);
+    //console.log(item._ownerId)
 });
 
 

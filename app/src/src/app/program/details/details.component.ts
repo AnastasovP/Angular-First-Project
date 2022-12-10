@@ -36,27 +36,32 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.fetchCurrentProgram();
 
     //After fetch all data find first Follower - value
-    setTimeout(() => {
-      (this.isLiked as any) = this.currentProgram?.likes.includes(this.userId + '')
-    }, 100);
+    // setTimeout(() => {
+    //   (this.isLiked as any) = this.currentProgram?.likes.includes(this.userId + '')
+    // }, 100);
 
     //navigate to 404 if Program dont exist!
-    setTimeout(() => {
-      if (this.currentProgram === undefined) {
-        this.router.navigate(['/404']);
-        console.log(this.currentProgram)
-      }
-    }, 300)
+    // setTimeout(() => {
+    //   if (this.currentProgram === undefined) {
+    //     this.router.navigate(['/404']);
+    //     console.log('form setTimeout', this.currentProgram)
+    //   }
+    // }, 300)
   }
 
   fetchCurrentProgram(): void {
     this.currentProgram = undefined;
     const id = this.activatedRoute.snapshot.params['id'];
 
-    // this.programService.loadCurrentProgram(id).subscribe(program =>
-    //   this.currentProgram = program,
-    //  );
-    this.refreshProgram$.pipe(switchMap(_ => this.programService.loadCurrentProgram(id))).subscribe(program => this.currentProgram = program)
+    this.programService.loadCurrentProgram(id).subscribe({
+      next: program => {
+      console.log('program', program);
+      this.currentProgram = program
+      },
+      error: (err) => console.error(err)
+    }
+    );
+    //this.refreshProgram$.pipe(switchMap(_ => this.programService.loadCurrentProgram(id))).subscribe(program => this.currentProgram = program)
    
   };
 
