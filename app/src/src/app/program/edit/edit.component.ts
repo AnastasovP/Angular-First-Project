@@ -18,12 +18,12 @@ export class EditComponent implements OnInit {
     private fb: FormBuilder) {
     this.fetchCurrentProgram();
     this.editPost = this.fb.group({
-      title: ['', [Validators.required, Validators.minLength(30)]],
-      length: ['', [Validators.required]],
-      bodyFocus: ['', [Validators.required]],
-      averageDuration: ['', [Validators.required]],
-      daysPerWeek: ['', [Validators.required]],
-      description: ['', [Validators.required, Validators.maxLength(1000)]],
+      name: ['', [Validators.required, Validators.minLength(6)]],
+      description: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      ingredients: ['', [Validators.required, Validators.maxLength(200)]],
+      category: [''],
+      
     })
   }
 
@@ -37,17 +37,15 @@ export class EditComponent implements OnInit {
     this.programService.loadCurrentProgram(id).subscribe(program => {
       this.currentProgram = program;
       this.editPost.patchValue({
-        title: this.currentProgram.name,
-        length: this.currentProgram.description,
-        bodyFocus: this.currentProgram.image,
-        averageDuration: this.currentProgram.ingredients,
+        name: this.currentProgram.name,
+        description: this.currentProgram.description,
+        image: this.currentProgram.image,
+        ingredients: this.currentProgram.ingredients,
+        ctegory: this.currentProgram.category 
       })
     });
   };
 
-  cancelEditHandler(): void {
-    this.router.navigate(['/programs', this.currentProgram?._id])
-  }
 
   editProgramHandler(): void {
     const data = this.editPost.value;
@@ -55,7 +53,7 @@ export class EditComponent implements OnInit {
     if (data.invalid) {
       return
     };
-    const confirmed = confirm('Are you sure you want to edit this Article!');
+    const confirmed = confirm('Are you sure you want to edit this Recipe?');
     if(confirmed){
       this.programService.editProgram(id, data).subscribe({
         next: () => {

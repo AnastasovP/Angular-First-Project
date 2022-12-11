@@ -7,7 +7,7 @@ async function getAllPost() {
 
 async function getPostById(id) {
     const result = await Post.findById(id).populate('owner')
-    console.log(result);
+    //console.log(result);
     // console.log(req.data);
     return result;
     // .populate({
@@ -25,8 +25,11 @@ async function createPost(data) {
 async function updatePost(id, updated) {
     const original = await Post.findById(id);
     Object.assign(original, updated);
+    console.log('updated post', original)
     return original.save();
+
 }
+
 
 async function deletePost(id) {
     const post = await Post.findById(id);
