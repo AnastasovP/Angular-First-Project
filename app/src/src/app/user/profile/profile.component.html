@@ -1,16 +1,16 @@
 <section id="my-recipes-page" class="my-recipes">
   <h1>My Recipes</h1>
-  <ng-container *ngIf="programs" && *ngIf="user">
+  <ng-container *ngIf="programs">
     <ul class="other-recipes-list" *ngFor="let program of programs">
       <li class="otherRecipe">
         <h3>Name: {{program.name}}</h3>
         <p>Category: {{program.category}}</p>
-        <p class="img"><img src="{{'program.image'}}" /></p>
+        <p class="img"><img src="{{program.image}}" /></p>
         <a class="button" [routerLink]="['/programs', program._id]">Details</a>
       </li>
     </ul>
   </ng-container>
-  <ng-container *ngIf="!programs">
+  <ng-container *ngIf="!showPrograms">
     <p class="no-recipes">No recipes in database! <a routerLink="/add-program">Create the first one</a></p>
   </ng-container>
 

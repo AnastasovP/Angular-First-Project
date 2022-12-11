@@ -37,5 +37,8 @@ export class ProgramService {
     return this.http.post<IProgram>(`${API_URL}/post/like`, { data }, { withCredentials: true });
   }
 
+  loadUserPrograms(id: string) {
+    return this.http.get<IProgram>(`${API_URL}/post/profile/${id}`, { withCredentials: true });
+  }
   
 }

@@ -15,13 +15,15 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   currentProgram: IProgram | undefined;
   userId = localStorage.getItem('_id');
-  isLiked!: boolean
+  isLiked!: boolean;
 
   refreshProgram$ = new BehaviorSubject<boolean>(true);
 
   get isOwner(): boolean {
     return this.userId === this.currentProgram?.owner._id
   }
+
+   
 
   constructor(
     private programService: ProgramService,
@@ -35,7 +37,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.fetchCurrentProgram();
 
-    //After fetch all data find first Follower - value
+    
     // setTimeout(() => {
     //   (this.isLiked as any) = this.currentProgram?.likes.includes(this.userId + '')
     // }, 100);
@@ -63,7 +65,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     );
     //this.refreshProgram$.pipe(switchMap(_ => this.programService.loadCurrentProgram(id))).subscribe(program => this.currentProgram = program)
    
-  };
+  }
 
   deleteHandler(): void {
     const id = this.currentProgram?._id
@@ -78,18 +80,18 @@ export class DetailsComponent implements OnInit, OnDestroy {
         }
       });
     }
-  };
+  }
 
   likeHandler(): void {
     const postId = this.currentProgram?._id;
     const userId = localStorage.getItem('_id');
     this.programService.like({ userId, postId }).subscribe({
       next: (program) => {
-        this.isLiked = !this.isLiked //isFowoller
+        this.isLiked = !this.isLiked 
       },
     })
 
-  };
+  }
 
 
 

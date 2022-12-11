@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { UserRoutingModule } from './user-routing.module';
 import { UserService } from './user.service';
-//import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { CustomValidationService } from './validator/custom-validation.service';
 
 
@@ -15,7 +15,7 @@ import { CustomValidationService } from './validator/custom-validation.service';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    //ProfileComponent
+    ProfileComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +28,7 @@ import { CustomValidationService } from './validator/custom-validation.service';
   exports: [
     LoginComponent,
     RegisterComponent,
-    //ProfileComponent
+    ProfileComponent
   ],
   providers: [
     UserService,

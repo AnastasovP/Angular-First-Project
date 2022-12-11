@@ -54,14 +54,14 @@ async function like(userId, postId) {
     if (!post) {
         throw new Error('Invalid post');
     }
-    const userAlreadyLiked = user.programs.indexOf(postId) //user.programs.find(p => p._id == postId);
+    const userAlreadyLiked = user.programs.indexOf(postId); //user.programs.find(p => p._id == postId);
 
     if (userAlreadyLiked != -1) {
         throw new Error('You already liked this program');
     }
 
     if (userId == post.owner._id) {
-        throw new Error('You are owner, cannot like this post ')
+        throw new Error('You are owner, cannot like this post')
     }
 
     user.programs.push(post);
