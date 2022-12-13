@@ -5,9 +5,8 @@
 
 The project is designed as an application for different kind of sweets, facilitating the needs of browsing guest users, as well as logged in users.
 
-The app is created by [Petar Anastasov](https://github.com/AnastasovP) for the purposes of React.js SoftUni course
+The app is created by [Petar Anastasov](https://github.com/AnastasovP) for the purposes of Angular SoftUni course
 
-![](../cover.PNG)
 
 ### Public part:
 The guest users without authentication have access to the main dashboard in order to see the recipes of registered users, including: 
