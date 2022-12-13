@@ -85,6 +85,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
   likeHandler(): void {
     const postId = this.currentProgram?._id;
     const userId = localStorage.getItem('_id');
+    if(this.isLikedAlready) {
+      return;
+    }
     this.programService.like({ userId, postId }).subscribe({
       next: (program) => {
         this.isLiked = !this.isLiked 
@@ -95,12 +98,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
 
 
-  // get isFollower(): boolean {
-  //   if (this.currentProgram) {
-  //     return this.currentProgram.followers.includes(this.userId + '');
-  //   }
-  //   return false;
-  // }
+  get isLikedAlready(): boolean {
+    if (this.currentProgram) {
+      return this.currentProgram.likes.includes(this.userId + '');
+    }
+    return false;
+  }
 
 
 
