@@ -1,36 +1,26 @@
 <header id="site-header">
 
-    <nav class="navbar">
-      <section class="navbar-dashboard">
-        <a routerLink="/programs">Dashboard</a>
-        <ng-template #loggedOutTemplate>
-          <div id="guest">
-         
-           
-         
-              <a class="button" routerLink="/login">Login</a>
-            
-              <a class="button" routerLink="/register">Register</a>
-            
+  <nav class="navbar">
+    <section class="navbar-dashboard">
+      <a routerLink="/programs">Dashboard</a>
+
+      <ng-template #loggedOutTemplate>
+        <div id="guest">
+          <a class="button" routerLink="/login">Login</a>
+          <a class="button" routerLink="/register">Register</a>
         </div>
-        </ng-template>
-  
-        <ng-template #loggedInTemplate>
-          <div id="email">
-          
-   
-              <a class="button" [routerLink]="['/profile', userId]">My Sweets</a>
-            
-              <a class="button" routerLink="/add-program">Create Recipe</a>
-           
-              <a class="button" (click)="logoutHandler()">Logout</a>
-            
-          </div>
-        </ng-template>
-  
-        <ng-container *ngTemplateOutlet="isLogged ? loggedInTemplate : loggedOutTemplate"></ng-container>
-      </section>
-    </nav>
-  
-  
-  </header>
+      </ng-template>
+
+      <ng-template #loggedInTemplate>
+        <div id="email">
+          <a class="button" [routerLink]="['/profile', userId]">My Sweets</a>
+          <a class="button" routerLink="/add-program">Create Recipe</a>
+          <a class="button" (click)="logoutHandler()">Logout</a>
+        </div>
+      </ng-template>
+
+      <ng-container *ngTemplateOutlet="isLogged ? loggedInTemplate : loggedOutTemplate"></ng-container>
+    </section>
+  </nav>
+
+</header>

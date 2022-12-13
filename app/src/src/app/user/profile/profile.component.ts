@@ -18,24 +18,22 @@ export class ProfileComponent implements OnInit {
   showPrograms: boolean = false;
   noPrograms: boolean = false;
 
- 
-
   constructor(private userService: UserService,
-     private programService: ProgramService,
-      private router: Router) {
+    private programService: ProgramService,
+    private router: Router) {
 
   }
 
   ngOnInit(): void {
     this.loadUser()
-    setTimeout(()=>{this.fetchUserPrograms()},500) 
+    setTimeout(() => { this.fetchUserPrograms() }, 500)
   }
 
-  
+
   loadProgramsHandler(): void {
     this.showPrograms = !this.showPrograms;
 
-    if(this.programs.length == 0){
+    if (this.programs.length == 0) {
       this.noPrograms = true;
     }
   }
@@ -47,9 +45,9 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserById(id).subscribe(u => this.user = u)
   }
 
-  fetchUserPrograms(): void{
+  fetchUserPrograms(): void {
     this.programs = undefined;
-    if(!this.user){return}
+    if (!this.user) { return }
     const id = this.user._id
     this.programService.loadUserPrograms(id).subscribe(p => this.programs = p)
   }

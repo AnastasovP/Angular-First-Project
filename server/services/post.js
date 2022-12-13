@@ -45,8 +45,8 @@ async function getPostsByUserId(id) {
 }
 
 async function like(userId, postId) {
-    const user = await User.findById(userId) //.populate('programs'); 
-    const post = await Post.findById(postId) //.populate('user'); 
+    const user = await User.findById(userId).populate('programs'); //check the populate
+    const post = await Post.findById(postId).populate('user'); //check the populate
 
     if (!user) {
         throw new Error('Invalid user')

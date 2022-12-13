@@ -8,7 +8,7 @@
         <label for="email">Email</label>
         <span class="input">
 
-        <input type="email" id="loginEmal" class="form-control form-control-lg" formControlName="email" placeholder="anastasovp@gmail.com">
+        <input type="email" id="email" formControlName="email" placeholder="anastasovp@gmail.com">
       </span>
     </p>
         <ng-container *ngIf="form.get('email')?.touched">
@@ -31,7 +31,7 @@
           Password is required!
         </p>
         <p *ngIf="form.get('password')?.errors?.['minlength']" class="error">
-          Password must be at least 6 characters!
+          Password must be at least 6 characters long!
         </p>
       </ng-container>
 

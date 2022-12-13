@@ -41,7 +41,7 @@ export class EditComponent implements OnInit {
         description: this.currentProgram.description,
         image: this.currentProgram.image,
         ingredients: this.currentProgram.ingredients,
-        ctegory: this.currentProgram.category 
+        category: this.currentProgram.category 
       })
     });
   };

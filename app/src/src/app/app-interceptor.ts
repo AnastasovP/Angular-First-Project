@@ -17,7 +17,7 @@ export class AppInterceptor implements HttpInterceptor {
     
     return reqStream$.pipe(
       catchError((err) => {
-        console.log('im in Error Interceptor Handler')
+        console.log('I am in Error Interceptor Handler')
         return [err];
       })
     );
