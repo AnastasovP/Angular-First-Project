@@ -8,7 +8,7 @@
             <a class="button" (click)="deleteHandler()">Delete</a>
         </div>
         <div class="actions" *ngIf="!isOwner && !isLikedAlready">
-            <button class="button" type="button" (click)="likeHandler()">Like</button>
+            <button class="button" type="submit" (click)="likeHandler()">Like</button>
         </div>
         <div class="likes">
             <img class="hearts" src="../.././images/heart.png" />
