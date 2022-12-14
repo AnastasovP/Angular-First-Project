@@ -11,12 +11,17 @@ import { UserService } from '../user.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
+
+
+
 export class ProfileComponent implements OnInit {
 
   user!: IUser | undefined
-  programs: any
+  programs: IProgram[] | any
   showPrograms: boolean = false;
   noPrograms: boolean = false;
+
+
 
   constructor(private userService: UserService,
     private programService: ProgramService,
@@ -29,14 +34,15 @@ export class ProfileComponent implements OnInit {
     setTimeout(() => { this.fetchUserPrograms() }, 500)
   }
 
+  
 
-  loadProgramsHandler(): void {
-    this.showPrograms = !this.showPrograms;
+  // loadProgramsHandler(): void {
+  //   this.showPrograms = !this.showPrograms;
 
-    if (this.programs.length == 0) {
-      this.noPrograms = true;
-    }
-  }
+  //   if (this.programs.length == 0) {
+  //     this.noPrograms = true;
+  //   }
+  // }
 
   loadUser(): void {
     const id = localStorage.getItem('_id')
@@ -52,3 +58,38 @@ export class ProfileComponent implements OnInit {
     this.programService.loadUserPrograms(id).subscribe(p => this.programs = p)
   }
 }
+
+
+
+
+// export class ProfileComponent {
+//   programs: IProgram[] | any = null;
+//   isEmpty: boolean = false;
+//   user!: IUser | undefined
+
+//   constructor(private userService: UserService, private programService: ProgramService) {
+//     this.loadUser()
+//     this.getMyPrograms()
+//   }
+
+//     loadUser(): void {
+//     const id = localStorage.getItem('_id')
+//     if (!id) { return }
+//     this.user = undefined;
+//     this.userService.getUserById(id).subscribe(u => this.user = u)
+//   }
+
+//   getMyPrograms() {
+//     this.programs = undefined;
+//     if (!this.user) { return }
+//     const id = this.user._id
+//     this.programService.loadUserPrograms(id).subscribe({
+//       next: (value) => {
+//         this.programs = value;
+//         if(!value) {
+//           this.isEmpty = true;
+//         }
+//       }
+//     })
+//   }
+// }

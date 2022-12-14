@@ -10,10 +10,7 @@ async function getPostById(id) {
     //console.log(result);
     // console.log(req.data);
     return result;
-    // .populate({
-    //     path: 'comments',
-    //     populate: { path: 'author' },
-    // });
+    
 }
 
 async function createPost(data) {

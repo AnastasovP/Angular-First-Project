@@ -90,7 +90,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
     }
     this.programService.like({ userId, postId }).subscribe({
       next: (program) => {
-        this.isLiked = !this.isLiked 
+        this.isLiked = !this.isLiked
+        this.router.navigate(['/programs']);
+         
       },
     })
 
