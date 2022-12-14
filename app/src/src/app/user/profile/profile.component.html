@@ -5,7 +5,7 @@
       <li class="otherRecipe">
         <h3>Name: {{program.name}}</h3>
         <p>Category: {{program.category}}</p>
-        <p class="img"><img src={{program.image}} /></p>
+        <p class="img"><img src="{{program.imageUrl}}" /></p>
         <a class="button" [routerLink]="['/programs', program._id]">Details</a>
       </li>
     </ul>
