@@ -20,7 +20,7 @@ export class EditComponent implements OnInit {
     this.editPost = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       description: ['', [Validators.required]],
-      image: ['', [Validators.required]],
+      imageUrl: ['', [Validators.required]],
       ingredients: ['', [Validators.required, Validators.maxLength(200)]],
       category: [''],
       
@@ -39,7 +39,7 @@ export class EditComponent implements OnInit {
       this.editPost.patchValue({
         name: this.currentProgram.name,
         description: this.currentProgram.description,
-        image: this.currentProgram.image,
+        imageUrl: this.currentProgram.imageUrl,
         ingredients: this.currentProgram.ingredients,
         category: this.currentProgram.category 
       })

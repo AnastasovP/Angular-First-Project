@@ -2,7 +2,7 @@ export interface IProgram {
     _id: string,
     name: string,
     description: string,
-    image: string,
+    imageUrl: string,
     ingredients: string,
     category: string,
     likes: string[],

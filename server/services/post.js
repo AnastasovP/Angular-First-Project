@@ -15,7 +15,9 @@ async function getPostById(id) {
 
 async function createPost(data) {
     const result = new Post(data);
+    //console.log(data);
     await result.save();
+    //console.log('create Post result', result)
     return result;
 }
 

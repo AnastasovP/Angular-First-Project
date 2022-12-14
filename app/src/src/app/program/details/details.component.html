@@ -2,7 +2,7 @@
     <div class="recipe-information" *ngIf="currentProgram">
         <h3>Name: {{currentProgram.name}}</h3>
         <p class="category">Category: {{currentProgram.category}}</p>
-        <p class="img"><img src={{currentProgram.image}} alt="recipeImg" /></p>
+        <p class="img"><img src="{{currentProgram.imageUrl}}" alt="recipeImg" /></p>
         <div class="actions" *ngIf="isOwner">
             <a class="button" routerLink="/programs/edit/{{currentProgram._id}}">Edit</a>
             <a class="button" (click)="deleteHandler()">Delete</a>

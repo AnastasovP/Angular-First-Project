@@ -35,11 +35,11 @@
       <p class="field">
         <label for="image">Image:</label>
         <span class="input">
-          <input type="text" id="image" placeholder="Please upload an image" formControlName="image" />
+          <input type="text" id="image" placeholder="Please upload an image" formControlName="imageUrl" />
         </span>
       </p>
-      <ng-container *ngIf="formPost.get('image')?.touched">
-        <p *ngIf="formPost.get('image')?.errors?.['required']" class="error">
+      <ng-container *ngIf="formPost.get('imageUrl')?.touched">
+        <p *ngIf="formPost.get('imageUrl')?.errors?.['required']" class="error">
           Image is required
         </p>
       </ng-container>

@@ -21,7 +21,7 @@ export class ProgramService {
   }
 
 
-  postProgram(data: { name: string; description: string; image: string; ingredients: string; category: string; owner: string }) {
+  postProgram(data: { name: string, description: string, imageUrl: string, ingredients: string, category: string, owner: string }) {
     return this.http.post<IProgram>(`${API_URL}/post/create`, data, { withCredentials: true });
   };
 
