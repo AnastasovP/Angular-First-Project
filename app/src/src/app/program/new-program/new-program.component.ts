@@ -34,11 +34,11 @@ export class NewProgramComponent implements OnInit {
   postProgramHandler(): void {
     const data = this.formPost.value;
     data.owner = sessionStorage.getItem('_id');
-    console.log('data before subscribe', data)
+    //console.log('data before subscribe', data)
     if (this.formPost.invalid) { return; }
     this.programService.postProgram(data).subscribe({
       next: (result) => {
-        console.log('result from postProgram', result)
+        //console.log('result from postProgram', result)
         this.router.navigate(['/programs']); //, result._id
       },
       error: (err) => {
