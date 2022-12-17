@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthActivate } from '../core/guards/auth.activate';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';
-import { NewProgramComponent } from './new-program/new-program.component';
-import { ProgramListComponent } from './program-list/program-list.component';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 
 
 
@@ -16,7 +16,7 @@ const routes: Routes = [
             {
                 path: '',
                 pathMatch: 'full',
-                component: ProgramListComponent
+                component: RecipeListComponent
             },
             {
                 path: ':id',
@@ -36,7 +36,7 @@ const routes: Routes = [
     },
     {
         path: 'add-program',
-        component: NewProgramComponent,
+        component: NewRecipeComponent,
         canActivate: [AuthActivate],
         data: {
             authenticationRequired: true,
@@ -48,4 +48,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class ProgramRoutingModule { }
+export class RecipeRoutingModule { }

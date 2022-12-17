@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProgramService } from 'src/app/program/program.service';
-import { IProgram } from 'src/app/shared/interfaces/program';
+import { RecipeService } from 'src/app/recipe/recipe.service';
+import { IRecipe } from 'src/app/shared/interfaces/recipe';
 import { IUser } from 'src/app/shared/interfaces/user';
 import { UserService } from '../user.service';
 
@@ -17,21 +17,21 @@ import { UserService } from '../user.service';
 export class ProfileComponent implements OnInit {
 
   user!: IUser | undefined
-  programs: IProgram[] | any
+  recipes: IRecipe[] | any
   showPrograms: boolean = false;
   noPrograms: boolean = false;
 
 
 
   constructor(private userService: UserService,
-    private programService: ProgramService,
+    private recipeService: RecipeService,
     private router: Router) {
 
   }
 
   ngOnInit(): void {
     this.loadUser()
-    setTimeout(() => { this.fetchUserPrograms() }, 500)
+    setTimeout(() => { this.fetchUserRecipes() }, 500)
   }
 
   
@@ -39,8 +39,8 @@ export class ProfileComponent implements OnInit {
   // loadProgramsHandler(): void {
   //   this.showPrograms = !this.showPrograms;
 
-  //   if (this.programs.length == 0) {
-  //     this.noPrograms = true;
+  //   if (this.recipes.length == 0) {
+  //     this.recipes = true;
   //   }
   // }
 
@@ -51,45 +51,15 @@ export class ProfileComponent implements OnInit {
     this.userService.getUserById(id).subscribe(u => this.user = u)
   }
 
-  fetchUserPrograms(): void {
-    this.programs = undefined;
+  fetchUserRecipes(): void {
+    this.recipes = undefined;
     if (!this.user) { return }
     const id = this.user._id
-    this.programService.loadUserPrograms(id).subscribe(p => this.programs = p)
+    this.recipeService.loadUserRecipes(id).subscribe(r => this.recipes = r)
   }
 }
 
 
 
 
-// export class ProfileComponent {
-//   programs: IProgram[] | any = null;
-//   isEmpty: boolean = false;
-//   user!: IUser | undefined
 
-//   constructor(private userService: UserService, private programService: ProgramService) {
-//     this.loadUser()
-//     this.getMyPrograms()
-//   }
-
-//     loadUser(): void {
-//     const id = localStorage.getItem('_id')
-//     if (!id) { return }
-//     this.user = undefined;
-//     this.userService.getUserById(id).subscribe(u => this.user = u)
-//   }
-
-//   getMyPrograms() {
-//     this.programs = undefined;
-//     if (!this.user) { return }
-//     const id = this.user._id
-//     this.programService.loadUserPrograms(id).subscribe({
-//       next: (value) => {
-//         this.programs = value;
-//         if(!value) {
-//           this.isEmpty = true;
-//         }
-//       }
-//     })
-//   }
-// }

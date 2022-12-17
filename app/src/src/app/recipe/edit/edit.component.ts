@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IProgram } from 'src/app/shared/interfaces/program';
-import { ProgramService } from '../program.service';
+import { IRecipe } from 'src/app/shared/interfaces/recipe';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-edit',
@@ -11,12 +11,12 @@ import { ProgramService } from '../program.service';
 })
 export class EditComponent implements OnInit {
 
-  currentProgram: IProgram | undefined;
+  currentRecipe: IRecipe | undefined;
   editPost: FormGroup
 
-  constructor(private programService: ProgramService, private router: Router, private activatedRoute: ActivatedRoute,
+  constructor(private recipeService: RecipeService, private router: Router, private activatedRoute: ActivatedRoute,
     private fb: FormBuilder) {
-    this.fetchCurrentProgram();
+    this.fetchCurrentRecipe();
     this.editPost = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(6)]],
       description: ['', [Validators.required]],
@@ -31,17 +31,17 @@ export class EditComponent implements OnInit {
 
   }
 
-  fetchCurrentProgram(): void {
-    this.currentProgram = undefined;
+  fetchCurrentRecipe(): void {
+    this.currentRecipe = undefined;
     const id = this.activatedRoute.snapshot.params['id'];
-    this.programService.loadCurrentProgram(id).subscribe(program => {
-      this.currentProgram = program;
+    this.recipeService.loadCurrentRecipe(id).subscribe(recipe => {
+      this.currentRecipe = recipe;
       this.editPost.patchValue({
-        name: this.currentProgram.name,
-        description: this.currentProgram.description,
-        imageUrl: this.currentProgram.imageUrl,
-        ingredients: this.currentProgram.ingredients,
-        category: this.currentProgram.category 
+        name: this.currentRecipe.name,
+        description: this.currentRecipe.description,
+        imageUrl: this.currentRecipe.imageUrl,
+        ingredients: this.currentRecipe.ingredients,
+        category: this.currentRecipe.category 
       })
     });
   };
@@ -49,13 +49,13 @@ export class EditComponent implements OnInit {
 
   editProgramHandler(): void {
     const data = this.editPost.value;
-    const id = this.currentProgram?._id
+    const id = this.currentRecipe?._id
     if (data.invalid) {
       return
     };
     const confirmed = confirm('Are you sure you want to edit this Recipe?');
     if(confirmed){
-      this.programService.editProgram(id, data).subscribe({
+      this.recipeService.editRecipe(id, data).subscribe({
         next: () => {
           this.router.navigate(['programs', id])
         },

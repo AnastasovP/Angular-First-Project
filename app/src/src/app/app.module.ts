@@ -6,7 +6,7 @@ import { CoreModule } from './core/core.module';
 
 import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ProgramModule } from './program/program.module';
+import { RecipeModule } from './recipe/recipe.module';
 import { appInterceptorProvider } from './app-interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
@@ -21,7 +21,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     BrowserModule,
     UserModule,
-    ProgramModule,
+    RecipeModule,
     CoreModule,
     HttpClientModule,
     BrowserAnimationsModule,

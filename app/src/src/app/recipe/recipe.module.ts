@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NewProgramComponent } from './new-program/new-program.component';
-import { ProgramService } from './program.service';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import { RecipeService } from './recipe.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProgramListComponent } from './program-list/program-list.component';
+import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { DetailsComponent } from './details/details.component';
-import { ProgramRoutingModule } from './program-routing.module';
+import { RecipeRoutingModule } from './recipe-routing.module';
 import { EditComponent } from './edit/edit.component';
 
 
 
 @NgModule({
   declarations: [
-    NewProgramComponent,
-    ProgramListComponent,
+    NewRecipeComponent,
+    RecipeListComponent,
     DetailsComponent,
     EditComponent
   ],
@@ -21,11 +21,11 @@ import { EditComponent } from './edit/edit.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ProgramRoutingModule,
+    RecipeRoutingModule,
   ],
   exports:[ ],
   providers:[
-    ProgramService,
+    RecipeService,
   ]
 })
-export class ProgramModule { }
+export class RecipeModule { }

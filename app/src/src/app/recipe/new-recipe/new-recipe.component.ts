@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProgramService } from '../program.service';
+import { RecipeService } from '../recipe.service';
 
 @Component({
-  selector: 'app-new-program',
-  templateUrl: './new-program.component.html',
-  styleUrls: ['./new-program.component.scss']
+  selector: 'app-new-recipe',
+  templateUrl: './new-recipe.component.html',
+  styleUrls: ['./new-recipe.component.scss']
 })
-export class NewProgramComponent implements OnInit {
+export class NewRecipeComponent implements OnInit {
 
 
   formPost: FormGroup
 
   constructor(
-    private programService: ProgramService,
+    private recipeService: RecipeService,
     private fb: FormBuilder,
     private router: Router) {
     this.formPost = this.fb.group({
@@ -36,7 +36,7 @@ export class NewProgramComponent implements OnInit {
     data.owner = sessionStorage.getItem('_id');
     //console.log('data before subscribe', data)
     if (this.formPost.invalid) { return; }
-    this.programService.postProgram(data).subscribe({
+    this.recipeService.postRecipe(data).subscribe({
       next: (result) => {
         //console.log('result from postProgram', result)
         this.router.navigate(['/programs']); //, result._id
