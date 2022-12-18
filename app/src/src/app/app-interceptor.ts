@@ -2,6 +2,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HTTP_INTERCEPTORS
 import { Injectable, Provider } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
+import * as alertify from 'alertifyjs';
 
 import { environment } from '../environments/environment';
  const API_URL = environment.apiURL;
@@ -17,7 +18,8 @@ export class AppInterceptor implements HttpInterceptor {
     
     return reqStream$.pipe(
       catchError((err) => {
-        console.log('I am in Error Interceptor Handler')
+        console.log('I am in Error Interceptor Handler', err.error.message)
+        alertify.error(err.error.message);
         return [err];
       })
     );

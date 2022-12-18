@@ -2,3 +2,5 @@
 @import 'forms.css';
 @import 'navigation.css';
 @import 'all.css';
+@import '../node_modules/alertifyjs/build/css/alertify.css';
+@import '../node_modules/alertifyjs/build/css/themes/bootstrap.min.css';

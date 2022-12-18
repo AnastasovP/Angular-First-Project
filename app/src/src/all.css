@@ -233,6 +233,6 @@ textarea#description {
     margin-right: auto;
     width: 1400px;
     height: 750px;
-    background-image: url("./images/404.png");
+    /* background-image: url("./images/404.png"); */
     background-repeat: round;
 }
